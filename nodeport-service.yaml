@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-service
+spec:
+  selector:
+    app: web-server
+  ports:
+  - protocol: TCP
+    port: 80 # The port the service exposes INSIDE the cluster
+    targetPort: 8080 # The port the container exposes
+    nodePort: 30001 #Specify the port on the node
+  type: NodePort
